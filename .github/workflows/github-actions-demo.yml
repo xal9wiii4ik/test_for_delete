@@ -5,6 +5,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Create File .env
+        run: |
+          echo some data > .env
       - name: Create File
         run: |
           echo some data > .env.db
