@@ -15,7 +15,5 @@ jobs:
           cat .env.db
       - name: Build the stack
         run: docker-compose up -d
-      - name: Activtae
-        run: poetry shell
       - name: Test
-        run: pytest
+        run: docker-compose exec web pytest
