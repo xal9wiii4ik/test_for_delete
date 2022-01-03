@@ -22,3 +22,8 @@ jobs:
         env:
           COMPOSE_INTERACTIVE_NO_CLI: 1
         run: docker-compose exec -T web pytest
+      - name: PreCommit install
+        run: poetry add black pylint mypy
+      - run: black --diff --check $(git ls-files '*.py')
+      - run: pylint --disable=all --enable=unused-import $(git ls-files '*.py')
+      - run: mypy --strict $(git ls-files '*.py')
