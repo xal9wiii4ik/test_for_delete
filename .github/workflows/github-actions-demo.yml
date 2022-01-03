@@ -24,6 +24,6 @@ jobs:
         run: docker-compose exec -T web pytest
       - name: PreCommit install
         run: docker-compose exec -T web poetry add black pylint mypy
-      - run: docker-compose exec -T web black --diff --check $(git ls-files '*.py')
+#      - run: docker-compose exec -T web black --diff --check $(git ls-files '*.py')
       - run: docker-compose exec -T web pylint --disable=all --enable=unused-import $(git ls-files '*.py')
       - run: docker-compose exec -T web mypy --strict $(git ls-files '*.py')
